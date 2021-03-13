@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Voucher DumbWays Klontong</title>
+	<script type="text/javascript">
+		function hitungVoucher() {
+			var jenisVoucher = document.getElementById('jenisVc');
+			var voucher = jenisVoucher.options[jenisVoucher.selectedIndex].text;
+			var belanja = document.getElementById('belanja').value;
+			//alert(bayar+" dan "+voucher);
+			if (voucher == "DumbWaysJos") {
+				if (belanja > 50000) {
+					var potongan = 0.211;
+					var max = 20000;
+					var diskonawal = belanja * potongan;
+					if (diskonawal > max) {
+						var diskon = max;
+					}
+					else {
+						var	diskon = diskonawal;
+					}
+				}
+				else {
+					belanja;
+					var diskon = 0; 
+				}
+			}
+			else {
+				if (belanja > 80000) {
+					var potongan = 0.30;
+					var max = 40000; 
+					var diskonawal = belanja * potongan;
+					if (diskonawal > max) {
+						var	diskon = max;
+					}
+					else {
+						var diskon = diskonawal;
+					}
+				}
+				else { 
+					belanja;
+					var diskon = 0;
+				}
+				belanja;
+			}
+			var bayar = belanja - diskon;
+			var kembalian = belanja - bayar;
+			document.getElementById('keterangan').innerHTML = " <b>Ketentuan : </b><br>Jenis Voucher yang dipilih : "+voucher+" <br> Diskon  : "+potongan+ "<br> Maksimal Diskon : "+max;
+			document.getElementById('hasil').innerHTML = "<b>Pembayaran : </b><br>Uang yang harus dibayar : "+bayar+" <br> Diskon : "+diskon+ "<br> Kembalian : "+kembalian;	
+			
+		}
+	</script>
+</head>
+<body>
+	<fieldset> 
+		<h4>Jenis Voucher</h4>
+		<select id="jenisVc">
+			<option selected disabled>-- Pilih Voucher --</option>
+			<option value="dumbWaysJos">DumbWaysJos</option>
+			<option value="dumbWaysMantap">DumbWaysMantap</option>
+		</select>
+		<h4>Bayar</h4>
+		<input type="number" id="belanja">
+		<br>
+		<br>
+		<button onclick="hitungVoucher()">Hitung</button>
+</fieldset>
+<fieldset>
+	<p id="keterangan"></p>
+	<p id="hasil"></p>
+</fieldset>
+</body>
+
+</html>
